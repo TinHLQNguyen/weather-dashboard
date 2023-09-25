@@ -1,7 +1,7 @@
 let myHeading = document.querySelector("h1");
 
 if (!localStorage.getItem("name")) {
-  setUserName();
+  SetUserName();
 } else {
   const storedName = localStorage.getItem("name");
   myHeading.textContent = `The RobotHub is cool, ${storedName}`;
@@ -9,7 +9,7 @@ if (!localStorage.getItem("name")) {
 
 const myImage = document.querySelector("img");
 
-function changeImage() {
+function ChangeImage() {
   const mySrc = myImage.getAttribute("src");
   if (mySrc === "images/RobotHub-v4.png") {
     myImage.setAttribute("src", "images/v4_page_logo_retina.png");
@@ -19,24 +19,42 @@ function changeImage() {
 };
 
 // 2 ways to add event handler using onclick & addEventListener("click",)
-// myImage.onclick = function(){
-//   changeImage();
-// };
-myImage.addEventListener("click", function(){
-  changeImage();
-});
+// myImage.onclick = ChangeImage
+myImage.addEventListener("click", ChangeImage);
+
+const para = document.querySelector(".test");
+
+para.addEventListener("click", UpdateName);
+
+function UpdateName() {
+  const name = prompt("Enter a new name");
+  para.textContent = `Player 1: ${name}`;
+}
 
 let myButton = document.querySelector("button");
-myButton.onclick = function(){
-  setUserName();
-};
+myButton.onclick = SetUserName
 
-function setUserName() {
+function SetUserName() {
   const myName = prompt("Please enter your name.");
   if (!myName) {
-    setUserName();
+    SetUserNameetUserName();
   } else {
     localStorage.setItem("name", myName);
     myHeading.textContent = `The RobotHub is cool, ${myName}`;
   }
+}
+
+// document.addEventListener("DOMContentLoaded", RunJSExampleButton);
+// function RunJSExampleButton(){
+//   const button = document.querySelector("#js-button");
+//   button.addEventListener("click", CreateParagraph);
+// }
+
+const button = document.querySelector("#js-button");
+button.addEventListener("click", CreateParagraph);
+
+function CreateParagraph() {
+  const para = document.createElement("p");
+  para.textContent = "You clicked the button!";
+  document.body.appendChild(para);
 }

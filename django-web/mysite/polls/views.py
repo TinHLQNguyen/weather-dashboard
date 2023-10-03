@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import Http404
 from django.http import HttpResponse
 
@@ -11,13 +11,12 @@ def index(request):
         # this assign the variable "latest_question_list" to be used inside html template
         "latest_question_list": latest_question_list,
     }
+    # render() is a shortcut to load template -> fill context -> return HttpResponse
     return render(request, "polls/index.html", context)
 
 def detail(request, question_id):
-    try:
-        question = Question.objects.get(pk=question_id)
-    except Question.DoesNotExist:
-        raise Http404("Question does not exist")
+    # get_object_or_404() is a shortcut that get entry, raise 404 if DoesNotExist
+    question = get_object_or_404(Question, pk=question_id)
     context = {
         "question" : question,
     }

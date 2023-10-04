@@ -1,2 +1,3 @@
 # all .pyc stuff
 *.pyc
+django-web/mysite/mysite/__pycache__/

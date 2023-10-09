@@ -1,0 +1,15 @@
+li a {
+    color: green;
+}
+li {
+    color: cyan;
+}
+h1 {
+    color: brown;
+}
+strong {
+    color: red
+}
+body {
+    background: white url("images/RobotHub-v4.png") no-repeat;
+}
